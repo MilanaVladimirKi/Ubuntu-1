@@ -2,18 +2,18 @@
 
 ## Основные команды создания и редактирования пользователей.
 
-Добавление пользователя осуществляется при помощи команды useradd 
+##### Добавление пользователя осуществляется при помощи команды useradd 
 
 Для вызовы команды необходимы права суперпользователя. Ддля использование прав суперпользователя есть команда sudo 
 Пример: sudo useradd student
 
 Настройки для пользователя по умолчанию можно посмотреть, выполнив команду useradd -D
 
-Поменять настройки пользователя можно выполнив useradd -D -s /bin/bash
+##### Поменять настройки пользователя можно выполнив useradd -D -s /bin/bash
 
 Изменение параметров пользователя происходит с помощью утилиты usermod. Пример: usermod -c «комментарий пользователю» stu
 
-Изменить пароль пользователю можно при помощи утилиты passwd. Для ее выполнения необходимы права суперпользователя. 
+##### Изменить пароль пользователю можно при помощи утилиты passwd. Для ее выполнения необходимы права суперпользователя. 
 Пример: sudo passwd stu
 
 Команда passwd может использоваться и обычным пользователем для смены собственного пароля. 
@@ -22,7 +22,7 @@
 Суперпользователь с помощью утилит командной строки passwd и usermod может удалить пароль пользователь, дав возможность входить в систему без указания пароля. 
 ПРимеры: sudo passwd -d stu или sudo usermod -p "" stu
 
-Для удаления пользователя используется команда userdel. Для её использования необходимы права суперпользователя. 
+##### Для удаления пользователя используется команда userdel. Для её использования необходимы права суперпользователя. 
 Пример: sudo userdel stu
 Дополнительно: 
 Ключ -f Принудительно удалит пользователя, даже если он сейчас работает в системе. Пример: sudo userdel -f student
@@ -72,7 +72,7 @@ account:password:UID:GID:GECOS:directory:shell
 
 Символ «x» в поле пароля означает, что в системе используются теневые пароли и пароль пользователя хранится в файле etc/shadow 
 
-![пример](https://sun9-27.userapi.com/impf/yT3aJ9vc4U4Gz7u9bMZG4u2u1NCxE1H3oeE0XQ/nMFDHEnB8JM.jpg?size=511x76&quality=95&sign=bd84a5b1b0a4160c76914050e68d2835&type=album)svg 
+![пример](https://sun9-27.userapi.com/impf/yT3aJ9vc4U4Gz7u9bMZG4u2u1NCxE1H3oeE0XQ/nMFDHEnB8JM.jpg?size=511x76&quality=95&sign=bd84a5b1b0a4160c76914050e68d2835&type=album)
 
 Есть имя каждого пользовател, пароль отмечан как "х", есть ID каждого пользователя и ID основной группы. У студента была переопределена группа, Иванов изначально был записан в группу студент, остальные пользователи входят в именые группы. 
 
@@ -80,7 +80,7 @@ account:password:UID:GID:GECOS:directory:shell
 
 etc/shadow – в этом файле хранятся "теневые пароли", информация о паролях пользователей в зашифрованном виде.
 
-![пример](https://sun9-29.userapi.com/impf/DQKVlQsXnE6jlC-maPfy6EEkRaCEjPLyQQoYDQ/yFAJA7XripA.jpg?size=1215x79&quality=95&sign=3d617ed099dd05697ff207b66ab3a48f&type=album)svg 
+![пример](https://sun9-29.userapi.com/impf/DQKVlQsXnE6jlC-maPfy6EEkRaCEjPLyQQoYDQ/yFAJA7XripA.jpg?size=1215x79&quality=95&sign=3d617ed099dd05697ff207b66ab3a48f&type=album)
 
 Есть имя каждого пользователя, пароль в зашифрованном виде, 19806 - дата последнего изменения пароля, 0 - мин. колличество дней, есть максимальное... нет последних 2 значений. Но они и не обязательны
 
@@ -148,7 +148,9 @@ testuser:x:3000:3000:test user:/home/testuser:/bin/bash
 Добавлен пользователь «testuser» с идентификатором 3000.
 Пользователь добавлен в группу с таким же идентификатором, которая еще не создана. 
 У пользователя установлен комментарий, гласящий «test user», домашний каталог установлен как "/home/testuser", а командная оболочка – как "/bin/bash". 
-Cохраните файл.
+Cохраните файл. 
+
+![1](https://sun9-9.userapi.com/impg/6WZOznoQf1RzgMO4VjwxtCVvpSBWTW75LKGliQ/j2M0Q0XOqG0.jpg?size=896x884&quality=95&sign=c5a53bafa37e0fcc2d1be48ebe0dd16e&type=album)
 
 2. Необходимо добавить запись в /etc/shadow для этого пользователя. 
 
@@ -157,22 +159,35 @@ drobbins: $1$1234567890123456789012345678901:11664:0:-1:-1:-1:-1:0
 
 Замените имя пользователя в скопированной строке на имя вашего пользователя и убедитесь что все поля (особенно старый пароль) установлены:
 testuser: $1$1234567890123456789012345678901:11664:0:-1:-1:-1:-1:0
-Сохраните внесенные изменения.
+Сохраните внесенные изменения. 
+
+![2](https://sun9-47.userapi.com/impg/pLA7tMboC7MR_TM_ZjtAS0CA6vRAupTV1PSlIQ/2WnGFwTis74.jpg?size=457x137&quality=95&sign=98197c7958618f1c9b808838a5939816&type=album)
+
 
 3. Теперь необходимо определить пароль для нового пользователя. 
 
-Введите в командной строке команду passwd testuser и определите пароль пользователя.
+Введите в командной строке команду passwd testuser и определите пароль пользователя. 
+
+![3](https://sun9-47.userapi.com/impg/pLA7tMboC7MR_TM_ZjtAS0CA6vRAupTV1PSlIQ/2WnGFwTis74.jpg?size=457x137&quality=95&sign=98197c7958618f1c9b808838a5939816&type=album)
 
 4. Если решено добавить созданного пользователя к уже имеющейся группе, то не понадобиться создавать новую группу в /etc/groups 
 Если это не так, то необходимо добавить новую группу для этого пользователя, введя в файл следующую строку: 
-testuser:x:3000:
+testuser:x:3000: 
+
+![4](https://sun9-20.userapi.com/impg/rTZx3dEvUj3Kp00LWb8ae6GRon-stE1glLG_lg/_Fi1mXeGjeE.jpg?size=273x117&quality=95&sign=29112886bcc013ecb40c3faee1c3fb8d&type=album)
 
 5. Для создания домашнего каталога нового пользователя выполните следующие команды:
 
-# cd /home
-# mkdir testuser
-# chown testuser:testuser testuser
-# chmod o-rwx testuser
+ cd /home
+
+ mkdir testuser
+
+ chown testuser:testuser testuser
+
+ chmod o-rwx testuser 
+
+![5](https://sun9-21.userapi.com/impg/JhL3DLrA9cEirTbejAwC9cbP16r3S6JqJ1680g/MZBDpfhXNs4.jpg?size=638x93&quality=95&sign=2d8265fd6b03b6507eff71bcf8f7fdb0&type=album)
+
 
 6. Во время входа пользователя в систему, до появления у него командной строки, происходит целый ряд событий.
 После ввода регистрационного имени и пароля система проверяет, может ли пользователь войти в систему. 
@@ -197,4 +212,10 @@ testuser:x:3000:
 Установки /etc/profile могут быть переопределены при добавлении в файл .profile нового элемента с другим значением либо при выполнении команды unset. 
 Настройка файла .profile остается в распоряжении пользователя. 
 
-![скрины](https://sun9-38.userapi.com/impf/LbM5P_pOR-jXBI592Okgkm_Itu_iSRP7HsVSHg/cDX_oIxTJYY.jpg?size=1200x1500&quality=95&sign=8e42fd609d04786635d2063872fa46d9&type=album)svg 
+8. Можно удалить пользователя 
+
+![Удаление](https://sun9-61.userapi.com/impg/u31dfnu8-7hvNgsUpNQmu7JyG7NyJXO_f266Iw/wB5D6mI-uSw.jpg?size=898x895&quality=95&sign=6e0cf453c152612df2d46a9bb37304fc&type=album)
+
+И снова создать с помощью gebit
+
+![скрины](https://sun9-38.userapi.com/impf/LbM5P_pOR-jXBI592Okgkm_Itu_iSRP7HsVSHg/cDX_oIxTJYY.jpg?size=1200x1500&quality=95&sign=8e42fd609d04786635d2063872fa46d9&type=album)
